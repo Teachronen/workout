@@ -1,0 +1,12 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+  <h1>{{ title }}</h1>
+  <p><strong>Plan date:</strong> {{ plan.date }} | <strong>Title:</strong> {{ plan.title }}</p>
+  <p>This will <strong>replace</strong> existing items in this plan.</p>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="default">Import</button>
+  </form>
+{% endblock %}

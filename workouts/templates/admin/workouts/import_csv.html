@@ -1,0 +1,19 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+  <h1>Import items from CSV</h1>
+  <p><strong>Plan:</strong> {{ plan }}</p>
+  <p>This will <strong>replace</strong> existing items in the plan.</p>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="action" value="{{ action_name }}">
+    <button type="submit" name="apply" class="default">Import</button>
+  </form>
+
+  <p style="margin-top: 1rem;">
+    Required columns: Exercise, Sets, Reps_or_Time, Rest_Seconds, YouTube_URL
+  </p>
+{% endblock %}

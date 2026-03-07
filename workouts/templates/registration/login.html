@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>התחברות</title>
+  <style>
+    body { font-family: Arial; direction: rtl; max-width: 420px; margin: 48px auto; }
+    label { display:block; margin-top: 12px; }
+    input { width: 100%; padding: 10px; margin-top: 6px; }
+    button { margin-top: 16px; padding: 10px 14px; width: 100%; cursor: pointer; }
+    .error { color: #b00020; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <h1>התחברות</h1>
+
+  {% if form.errors %}
+    <div class="error">שם משתמש או סיסמה שגויים.</div>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+
+    <label for="id_username">שם משתמש</label>
+    {{ form.username }}
+
+    <label for="id_password">סיסמה</label>
+    {{ form.password }}
+
+    <input type="hidden" name="next" value="{{ next }}">
+
+    <button type="submit">התחבר</button>
+  </form>
+</body>
+</html>

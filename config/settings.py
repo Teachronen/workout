@@ -25,7 +25,20 @@ SECRET_KEY = 'django-insecure-rugahtak1h5m1ex-q=61r8&g#n(yvbww3i_c=c1!g-+if_ghla
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = [
+    "https://workout.deeplearninghuman.com",
+]
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+ALLOWED_HOSTS = [
+    "workout.deeplearninghuman.com",
+    "159.69.203.197",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
@@ -115,7 +128,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Redirects after login / logout
 LOGIN_REDIRECT_URL = "/today/"
 LOGOUT_REDIRECT_URL = "/accounts/login/"
